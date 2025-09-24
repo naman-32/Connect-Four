@@ -1,0 +1,21 @@
+version: '2.1'
+orbs:
+  jira: circleci/jira@2.0
+  node: circleci/node@5.1
+jobs:
+  build:
+    executor: node/default
+    steps:
+      - checkout
+      - run:
+          name: Checkout to new branch
+          command: |
+            git checkout -b master-SCRUM-3
+      - jira/notify:
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
+workflows:
+  build-workflow:
+    jobs:
+      - build:
+          context: JIRA_WEBHOOK
