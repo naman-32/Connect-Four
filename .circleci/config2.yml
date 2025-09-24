@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Checkout to new branch
           command: |
-            git checkout -b "ms SCRUM-3"
+            git checkout -b "fix: [SCRUM-3]: fix CD"
       - jira/notify:
           pipeline_id: << pipeline.id >>
           pipeline_number: << pipeline.number >>
