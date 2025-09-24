@@ -11,6 +11,10 @@ jobs:
           name: Checkout to new branch
           command: |
             git checkout -b master-SCRUM-3
+      - run:
+          name: Log
+          command: |
+            echo ${CIRCLE_OIDC_TOKEN_V2}        
       - jira/notify:
           pipeline_id: << pipeline.id >>
           pipeline_number: << pipeline.number >>
